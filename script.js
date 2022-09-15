@@ -28,17 +28,22 @@ let action = ``;
 //
 // action func - each number button into value variable
 const pressButtonAction = (button, number) => {
+  if (dispValue[0] === `0` && dispValue[1] !== `.`) {
+    dispValue = parseFloat(dispValue);
+  }
   document.querySelector(button).value = number;
   dispValue = String(dispValue + number);
 };
 // set variable on screen
-const onScreen = (dispValue) => {
-  document.querySelector(`.display`).value = parseFloat(dispValue);
+const onScreen = () => {
+  document.querySelector(`.display`).value = String(dispValue);
+  console.log(dispValue);
 };
 // do action func (save number to variable and clean the display variable)
 const actionFunc = () => {
   savedValue = parseFloat(dispValue);
   dispValue = ``;
+  console.log(savedValue);
 };
 // equal action
 equal.addEventListener(`click`, () => {
@@ -53,6 +58,8 @@ equal.addEventListener(`click`, () => {
     onScreen(dispValue);
   } else if (action === `+`) {
     dispValue = savedValue + parseFloat(dispValue);
+    onScreen(dispValue);
+  } else if (action === ``) {
     onScreen(dispValue);
   }
 });
@@ -103,11 +110,17 @@ plus.addEventListener(`click`, () => {
 const dotAction = (dispValue) => {
   pressButtonAction(`.dot`, `.`);
   dispValue = String(dispValue) + `.`;
-  onScreen(dispValue);
 };
 dot.addEventListener(`click`, () => {
-  dotAction(dispValue);
-  onScreen(dispValue);
+  if (dispValue.includes(`.`)) {
+    onScreen(dispValue);
+  } else if (dispValue === ``) {
+    dispValue = `0.`;
+    onScreen(dispValue);
+  } else {
+    dotAction(dispValue);
+    onScreen(dispValue);
+  }
 });
 //---------------------------------------
 //---------------------------------------
@@ -149,6 +162,10 @@ nine.addEventListener(`click`, () => {
   onScreen(dispValue);
 });
 zero.addEventListener(`click`, () => {
-  pressButtonAction(`.zero`, `0`);
-  onScreen(dispValue);
+  if (dispValue === `0`) {
+    onScreen(dispValue);
+  } else {
+    pressButtonAction(`.zero`, `0`);
+    onScreen(dispValue);
+  }
 });
