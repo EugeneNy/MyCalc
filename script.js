@@ -64,9 +64,11 @@ reset.addEventListener(`click`, () => {
   onScreen(dispValue);
 });
 change.addEventListener(`click`, () => {
-  dispValue = parseFloat(dispValue);
-  dispValue = dispValue * -1;
-  onScreen(dispValue);
+  if (dispValue !== ``) {
+    dispValue = parseFloat(dispValue);
+    dispValue = dispValue * -1;
+    onScreen(dispValue);
+  }
 });
 percents.addEventListener(`click`, () => {
   dispValue = parseFloat(dispValue);
