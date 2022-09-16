@@ -10,6 +10,7 @@ body {
 .layout {
   margin: 5% auto;
   width: 20vw;
+  min-width: 375px;
 }
 
 .buttons {
