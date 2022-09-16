@@ -3,46 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.6" />
     <link rel="stylesheet" href="style.css" />
+    <title>Calculator</title>
   </head>
   <body>
-    <div class="table">
-      <table>
-        <tr>
-          <input type="number" class="display" disabled />
-        </tr>
-        <tr>
-          <td><button class="button firstline reset">AC</button></td>
-          <td><button class="button firstline change">±</button></td>
-          <td><button class="button firstline percents">%</button></td>
-          <td><button class="button rightline division">÷</button></td>
-        </tr>
-        <tr>
-          <td><button class="button seven">7</button></td>
-          <td><button class="button eight">8</button></td>
-          <td><button class="button nine">9</button></td>
-          <td><button class="button rightline multiplication">×</button></td>
-        </tr>
-        <tr>
-          <td><button class="button four">4</button></td>
-          <td><button class="button five">5</button></td>
-          <td><button class="button six">6</button></td>
-          <td><button class="button rightline minus">-</button></td>
-        </tr>
-        <tr>
-          <td><button class="button one">1</button></td>
-          <td><button class="button two">2</button></td>
-          <td><button class="button three">3</button></td>
-          <td><button class="button rightline plus">+</button></td>
-        </tr>
-        <tr>
-          <td colspan="2"><button class="button merge zero">0</button></td>
-          <td><button class="button dot">,</button></td>
-          <td><button class="button rightline equal">=</button></td>
-        </tr>
-      </table>
+    <div class="layout">
+      <div class="buttons">
+        <div class="input">
+          <input class="display" type="number" disabled />
+        </div>
+        <div class="button"><button class="firstline reset">AC</button></div>
+        <div class="button"><button class="firstline change">±</button></div>
+        <div class="button"><button class="firstline percents">%</button></div>
+        <div class="button"><button class="rightline division">÷</button></div>
+        <div class="button"><button class="seven">7</button></div>
+        <div class="button"><button class="eight">8</button></div>
+        <div class="button"><button class="nine">9</button></div>
+        <div class="button"><button class="rightline multiply">×</button></div>
+        <div class="button"><button class="four">4</button></div>
+        <div class="button"><button class="five">5</button></div>
+        <div class="button"><button class="six">6</button></div>
+        <div class="button"><button class="rightline minus">-</button></div>
+        <div class="button"><button class="one">1</button></div>
+        <div class="button"><button class="two">2</button></div>
+        <div class="button"><button class="three">3</button></div>
+        <div class="button"><button class="rightline plus">+</button></div>
+        <div class="button null"><button class="zero">0</button></div>
+        <div class="button"><button class="dot">.</button></div>
+        <div class="button"><button class="rightline equal">=</button></div>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
