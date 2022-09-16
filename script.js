@@ -1,5 +1,8 @@
 "use strict";
 //
+// many tumes actions
+// 0 from start
+//
 const reset = document.querySelector(`.reset`);
 const change = document.querySelector(`.change`);
 const percents = document.querySelector(`.percents`);
@@ -7,7 +10,7 @@ const division = document.querySelector(`.division`);
 const seven = document.querySelector(`.seven`);
 const eight = document.querySelector(`.eight`);
 const nine = document.querySelector(`.nine`);
-const miltiplication = document.querySelector(`.multiplication`);
+const multiply = document.querySelector(`.multiply`);
 const four = document.querySelector(`.four`);
 const five = document.querySelector(`.five`);
 const six = document.querySelector(`.six`);
@@ -22,8 +25,10 @@ const equal = document.querySelector(`.equal`);
 //
 //
 let dispValue = ``;
+document.querySelector(`.display`).value = String(dispValue);
 let savedValue = ``;
 let action = ``;
+let dotInp = ``;
 //
 //
 // action func - each number button into value variable
@@ -37,16 +42,10 @@ const pressButtonAction = (button, number) => {
 // set variable on screen
 const onScreen = () => {
   document.querySelector(`.display`).value = String(dispValue);
-  console.log(dispValue);
 };
-// do action func (save number to variable and clean the display variable)
-const actionFunc = () => {
-  savedValue = parseFloat(dispValue);
-  dispValue = ``;
-  console.log(savedValue);
-};
-// equal action
-equal.addEventListener(`click`, () => {
+
+//equal function
+const equalFunc = () => {
   if (action === `/`) {
     dispValue = savedValue / parseFloat(dispValue);
     onScreen(dispValue);
@@ -62,11 +61,24 @@ equal.addEventListener(`click`, () => {
   } else if (action === ``) {
     onScreen(dispValue);
   }
+  console.log(`saved-`, savedValue, `display-`, dispValue, `action-`, action);
+};
+// do action func (save number to variable and clean the display variable)
+const actionFunc = () => {
+  dispValue = parseFloat(dispValue);
+  savedValue = parseFloat(dispValue);
+  dispValue = ``;
+};
+
+// equal action
+equal.addEventListener(`click`, () => {
+  equalFunc();
 });
 //------------------------------------------
 // action button functions ( reset, change symbol, percents)
 reset.addEventListener(`click`, () => {
   dispValue = ``;
+  savedValue = ``;
   action = ``;
   onScreen(dispValue);
 });
@@ -85,24 +97,24 @@ percents.addEventListener(`click`, () => {
 
 // action button functions ( div, multi, minus, plus)
 division.addEventListener(`click`, () => {
-  actionFunc();
   action = `/`;
-});
-miltiplication.addEventListener(`click`, () => {
   actionFunc();
+});
+multiply.addEventListener(`click`, () => {
   action = `*`;
+  actionFunc();
 });
 minus.addEventListener(`click`, () => {
   if (dispValue === ``) {
     dispValue = `-`;
   } else {
-    actionFunc();
     action = `-`;
+    actionFunc();
   }
 });
 plus.addEventListener(`click`, () => {
-  actionFunc();
   action = `+`;
+  actionFunc();
 });
 //---------------------------------------
 //----------DOT ACTION-------------------
@@ -110,6 +122,7 @@ plus.addEventListener(`click`, () => {
 const dotAction = (dispValue) => {
   pressButtonAction(`.dot`, `.`);
   dispValue = String(dispValue) + `.`;
+  dotInp = `.`;
 };
 dot.addEventListener(`click`, () => {
   if (dispValue.includes(`.`)) {
